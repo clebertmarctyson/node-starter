@@ -11,6 +11,9 @@
     "type": "git",
     "url": "git+https://github.com/clebertmarctyson/node-starter.git"
   },
+  "bin": {
+    "node-starter": "index.js"
+  },
   "keywords": [
     "node",
     "nodejs",

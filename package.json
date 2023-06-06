@@ -1,5 +1,5 @@
 {
-  "name": "@marcky9/node-starter",
+  "name": "node-starter",
   "version": "1.0.0",
   "description": "A tool to create Node.js projects",
   "main": "index.js",

@@ -1,0 +1,33 @@
+{
+  "name": "@marctysonclebert/node-starter",
+  "version": "1.0.0",
+  "description": "A tool to create Node.js projects",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/clebertmarctyson/node-starter.git"
+  },
+  "keywords": [
+    "node",
+    "nodejs",
+    "node-starter",
+    "nodejs-starter",
+    "starter"
+  ],
+  "author": "clebertmarctyson <marctysonclebert9@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/clebertmarctyson/node-starter/issues"
+  },
+  "homepage": "https://github.com/clebertmarctyson/node-starter#readme",
+  "dependencies": {
+    "chalk": "^5.2.0",
+    "child_process": "^1.0.2",
+    "commander": "^10.0.1",
+    "inquirer": "^9.2.7"
+  }
+}

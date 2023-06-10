@@ -1,11 +1,12 @@
 {
-  "name": "@marctysonclebert/node-starter",
+  "name": "@marctysonclebert/starter",
   "version": "1.0.0",
   "description": "A tool to create Node.js projects",
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js create"
   },
   "repository": {
     "type": "git",
@@ -31,6 +32,7 @@
     "chalk": "^5.2.0",
     "child_process": "^1.0.2",
     "commander": "^10.0.1",
-    "inquirer": "^9.2.7"
+    "inquirer": "^9.2.7",
+    "prettier": "^2.8.8"
   }
 }

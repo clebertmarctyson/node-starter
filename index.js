@@ -14,7 +14,6 @@ import { mkdirSync, writeFileSync } from "fs";
  */
 program
     .version("1.0.0")
-    .alias("-v")
     .description("A tool to create Node.js projects")
     .command("create")
     .description("Create a new project")

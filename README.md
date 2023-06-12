@@ -50,14 +50,22 @@ NodeStarter prend en charge les commandes suivantes :
 - `-V` ou `--version` : Affiche la version de NodeStarter installée.
 - `create` : Crée un nouveau projet Node.js en utilisant les configurations et la structure de fichiers prédéfinies.
 
+
 Exemple d'utilisation :
 
+* Pour affiche la version de NodeStarter installée.
 ```bash
 $ npx node-starter -V
 1.0.0
+```
 
+* Prée un nouveau projet Node.js en utilisant les configurations et la structure de fichiers prédéfinies.
+```bash
 $ npx node-starter create
-Création du projet...
+Création du projet en cours...
+...
+...
+...
 Projet créé avec succès !
 ```
 
@@ -75,8 +83,6 @@ Nous apprécions toutes les contributions, qu'il s'agisse de rapports de bugs, d
 
 ## License
 
-Ce projet est sous licence MIT. Pour plus d'informations, consultez le fichier [LICENSE](https://github.com/clebertmar
-
-ctyson/node-starter/blob/main/LICENSE).
+Ce projet est sous licence MIT. Pour plus d'informations, consultez le fichier [LICENSE](https://github.com/clebertmarctyson/node-starter/blob/main/LICENSE).
 
 ---

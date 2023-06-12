@@ -2,7 +2,7 @@
   "name": "@marctysonclebert/starter",
   "version": "1.0.0",
   "description": "A tool to create Node.js projects",
-  "main": "index.js",
+  "main": "./index.js",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -12,9 +12,7 @@
     "type": "git",
     "url": "git+https://github.com/clebertmarctyson/node-starter.git"
   },
-  "bin": {
-    "node-starter": "index.js"
-  },
+  "bin": "./index.js",
   "keywords": [
     "node",
     "nodejs",
@@ -30,9 +28,11 @@
   "homepage": "https://github.com/clebertmarctyson/node-starter#readme",
   "dependencies": {
     "chalk": "^5.2.0",
+    "chalk-animation": "^2.0.3",
     "child_process": "^1.0.2",
     "commander": "^10.0.1",
     "inquirer": "^9.2.7",
+    "nanospinner": "^1.1.0",
     "prettier": "^2.8.8"
   }
 }

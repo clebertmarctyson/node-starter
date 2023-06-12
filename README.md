@@ -9,6 +9,7 @@ NodeStarter est un générateur de projet Node.js polyvalent et personnalisable.
   - [Description](#description)
   - [Installation](#installation)
   - [Utilisation](#utilisation)
+  - [Commandes](#commandes)
   - [Contribuer](#contribuer)
   - [License](#license)
 
@@ -37,10 +38,28 @@ Assurez-vous d'avoir [Node.js](https://nodejs.org) installé sur votre machine.
 Après avoir installé NodeStarter, vous pouvez l'exécuter à l'aide de la commande suivante :
 
 ```bash
-$ npx node-starter
+$ npx node-starter 
 ```
 
 Cela lancera l'outil de génération de projet Node.js. Suivez les instructions à l'écran pour créer votre projet personnalisé.
+
+## Commandes
+
+NodeStarter prend en charge les commandes suivantes :
+
+- `-V` ou `--version` : Affiche la version de NodeStarter installée.
+- `create` : Crée un nouveau projet Node.js en utilisant les configurations et la structure de fichiers prédéfinies.
+
+Exemple d'utilisation :
+
+```bash
+$ npx node-starter -V
+1.0.0
+
+$ npx node-starter create
+Création du projet...
+Projet créé avec succès !
+```
 
 ## Contribuer
 
@@ -56,6 +75,8 @@ Nous apprécions toutes les contributions, qu'il s'agisse de rapports de bugs, d
 
 ## License
 
-Ce projet est sous licence MIT. Pour plus d'informations, consultez le fichier [LICENSE](https://github.com/clebertmarctyson/node-starter/blob/main/LICENSE).
+Ce projet est sous licence MIT. Pour plus d'informations, consultez le fichier [LICENSE](https://github.com/clebertmar
+
+ctyson/node-starter/blob/main/LICENSE).
 
 ---

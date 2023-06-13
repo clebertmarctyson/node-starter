@@ -84,6 +84,6 @@ Nous apprécions toutes les contributions, qu'il s'agisse de rapports de bugs, d
 
 ## License
 
-Ce projet est sous licence MIT. Pour plus d'informations, consultez le fichier [LICENSE](https://github.com/clebertmarctyson/nodestarter/blob/main/LICENSE).
+Ce projet est sous licence MIT. Pour plus d'informations, consultez le fichier [LICENSE](https://github.com/clebertmarctyson/nodestarter/blob/master/LICENSE).
 
 ---

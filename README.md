@@ -1,10 +1,10 @@
-# @marctysonclebert/starter-node
+# @marctysonclebert/nodestarter
 
 NodeStarter est un générateur de projet Node.js polyvalent et personnalisable. Créez rapidement des projets Node.js avec des configurations TypeScript prêtes à l'emploi, des tests Jest intégrés et une structure de fichiers préconfigurée. Accélérez votre processus de démarrage de projet avec NodeStarter !
 
 ## Table des matières
 
-- [@marctysonclebert/starter-node](#marctysonclebertstarter-node)
+- [@marctysonclebert/nodestarter](#marctysonclebertnodestarter)
   - [Table des matières](#table-des-matières)
   - [Description](#description)
   - [Installation](#installation)
@@ -28,7 +28,7 @@ Ce générateur de projet vous permet d'accélérer votre processus de démarrag
 Pour installer NodeStarter dans votre projet, vous pouvez utiliser votre gestionnaire de paquets préféré. Voici les étapes d'installation avec npm :
 
 ```bash
-$ npm i -g @marctysonclebert/starter-node
+$ npm i -g @marctysonclebert/nodestarter
 ```
 
 Assurez-vous d'avoir [Node.js](https://nodejs.org) installé sur votre machine.
@@ -38,7 +38,7 @@ Assurez-vous d'avoir [Node.js](https://nodejs.org) installé sur votre machine.
 Après avoir installé NodeStarter, vous pouvez l'exécuter à l'aide de la commande suivante :
 
 ```bash
-$ npx starter-node
+$ npx nodestarter
 ```
 
 Cela lancera l'outil de génération de projet Node.js. Suivez les instructions à l'écran pour créer votre projet personnalisé.
@@ -55,14 +55,14 @@ Exemple d'utilisation :
 - Pour affiche la version de NodeStarter installée.
 
 ```bash
-$ npx starter-node -V
+$ npx nodestarter -V
 1.0.0
 ```
 
 - Prée un nouveau projet Node.js en utilisant les configurations et la structure de fichiers prédéfinies.
 
 ```bash
-$ npx starter-node create
+$ npx nodestarter create
 Création du projet en cours...
 ...
 ...
@@ -74,7 +74,7 @@ Projet créé avec succès !
 
 Nous encourageons vivement les contributions à NodeStarter. Si vous souhaitez contribuer, veuillez suivre les étapes suivantes :
 
-1. Fork du dépôt [GitHub](https://github.com/clebertmarctyson/starter-node).
+1. Fork du dépôt [GitHub](https://github.com/clebertmarctyson/nodestarter).
 2. Créez une branche pour vos modifications : `git checkout -b feature/your-feature`.
 3. Effectuez les modifications et commit : `git commit -m 'Add some feature'`.
 4. Poussez les modifications vers votre fork : `git push origin feature/your-feature`.
@@ -84,6 +84,6 @@ Nous apprécions toutes les contributions, qu'il s'agisse de rapports de bugs, d
 
 ## License
 
-Ce projet est sous licence MIT. Pour plus d'informations, consultez le fichier [LICENSE](https://github.com/clebertmarctyson/starter-node/blob/main/LICENSE).
+Ce projet est sous licence MIT. Pour plus d'informations, consultez le fichier [LICENSE](https://github.com/clebertmarctyson/nodestarter/blob/main/LICENSE).
 
 ---

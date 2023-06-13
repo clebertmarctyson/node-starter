@@ -7,9 +7,9 @@ import { format } from "prettier";
  * @returns {Promise<void>} A promise that resolves after the specified delay.
  */
 export const sleep = (milliseconds) => {
-    return new Promise((resolve) => {
-        setTimeout(resolve, milliseconds);
-    });
+  return new Promise((resolve) => {
+    setTimeout(resolve, milliseconds);
+  });
 };
 
 /**
@@ -20,17 +20,17 @@ export const sleep = (milliseconds) => {
  * @returns {string} The formatted content.
  */
 export const formatContent = (type, content) => {
-    if (type === "ts" || type === "js") {
-        return format(content, {
-            parser: "babel",
-            semi: true,
-            singleQuote: true,
-            trailingComma: "none",
-            bracketSpacing: true,
-            arrowParens: "avoid",
-            endOfLine: "auto",
-        });
-    } else {
-        return JSON.stringify(content, null, 2);
-    }
+  if (type === "ts" || type === "js") {
+    return format(content, {
+      parser: "babel",
+      semi: true,
+      singleQuote: true,
+      trailingComma: "none",
+      bracketSpacing: true,
+      arrowParens: "avoid",
+      endOfLine: "auto",
+    });
+  } else {
+    return JSON.stringify(content, null, 2);
+  }
 };

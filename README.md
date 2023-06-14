@@ -28,7 +28,7 @@ Ce générateur de projets vous permet d'accélérer votre processus de démarra
 
 Pour installer NodeStarter dans votre projet, vous pouvez utiliser votre gestionnaire de paquets préféré. Voici les étapes d'installation en utilisant npm :
 
-```bash
+```
 $ npm i -g @marctysonclebert/node-starter
 ```
 
@@ -71,10 +71,12 @@ Une fois que vous aurez fourni les informations requises, NodeStarter créera le
 Nous encourageons vivement les contributions à NodeStarter. Si vous souhaitez contribuer, veuillez suivre les étapes suivantes :
 
 1. Fork du dépôt GitHub.
-2. Créez une branche pour vos modifications : git checkout -b feature/your-feature.
-3. Effectuez les modifications et commit : git commit -m 'Add some feature'.
-4. Poussez les modifications vers votre fork : git push origin feature/your-feature.
-5. Ouvrez une demande d'extraction (pull request) vers la branche master du dépôt d'origine.
+2. Créez une branche pour vos modifications : `$ git checkout -b feature/your-feature.`
+
+3. Effectuez les modifications et commit : `$ git commit -m 'Add some feature'.`
+
+4. Poussez les modifications vers votre fork : `$ git push origin feature/your-feature.`
+5. Ouvrez une demande d'extraction (pull request) vers la branche `master` du dépôt d'origine.
 
 Nous apprécions toutes les contributions, qu'il s'agisse de rapports de bugs, de demandes de fonctionnalités ou de corrections de code.
 

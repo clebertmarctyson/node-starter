@@ -30,7 +30,17 @@ export const formatContent = (type, content) => {
       arrowParens: "avoid",
       endOfLine: "auto",
     });
-  } else {
+  } else if (type === "json") {
     return JSON.stringify(content, null, 2);
+  } else {
+    return format(content, {
+      parser: "yaml",
+      semi: false,
+      singleQuote: false,
+      trailingComma: "none",
+      bracketSpacing: true,
+      arrowParens: "avoid",
+      endOfLine: "auto",
+    });
   }
 };

@@ -4,10 +4,11 @@ import { program } from "commander";
 import chalk from "chalk";
 import chalkAnimation from "chalk-animation";
 import { createSpinner } from "nanospinner";
-import inquirer from "inquirer";
+import inquirer from "inquirer/lib/inquirer.js";
 import { formatContent, sleep } from "./utils/utils.js";
 import { execSync } from "child_process";
 import { mkdirSync, writeFileSync } from "fs";
+import { log, error } from "console";
 
 const questions = [
   {
@@ -86,81 +87,12 @@ async function initializeProject() {
 }
 
 // Create a new project.
-async function createProject(
-  name,
-  type,
-  manager,
-  initScript,
-  installScript,
-  ext
-) {
+async function createProject(name, type, manager, initScript) {
   // A spinner to indicate project creation progress.
   const spinner = createSpinner(
     chalk.blue(`Creating ${name} project with ${type} using ${manager}...`)
   ).start();
-
   execSync(`mkdir ${name} && ${initScript}`, { stdio: "ignore" });
-  execSync(`cd ${name} && mkdir test`, { stdio: "ignore" });
-  execSync(`${installScript} jest`, { stdio: "ignore" });
-
-  if (type === "TypeScript") {
-    execSync(
-      `${installScript} -D nodemon ts-node typescript @types/node @types/jest ts-jest`,
-      { stdio: "ignore" }
-    );
-
-    // Add TypeScript configuration files
-    const tsConfig = {
-      compilerOptions: {
-        target: "es6",
-        module: "commonjs",
-        outDir: "dist",
-        rootDir: "./",
-        esModuleInterop: true,
-        strict: true,
-        paths: {
-          "*": ["./node_modules/*"],
-        },
-      },
-    };
-
-    writeFileSync(`./${name}/tsconfig.json`, formatContent("json", tsConfig));
-  }
-
-  const jestConfig = `
-        module.exports = {
-            preset: 'ts-jest',
-            testEnvironment: 'node',
-            testMatch: ['**/test/**/*.test.ts'],
-            roots: ['./test'],
-            moduleFileExtensions: ['ts'],
-            modulePathIgnorePatterns: ['./node_modules'],
-        };
-    `;
-
-  writeFileSync(`./${name}/jest.config.${ext}`, formatContent(ext, jestConfig));
-
-  const testImport =
-    type === "TypeScript"
-      ? `
-            import { method } from 'file';
-            import { describe, it, expect, toBe } from 'jest';
-        `
-      : "";
-
-  const testCode = `${testImport}
-        describe('method', () => {
-            it('Should do', () => {
-            expect(true).toBe(true);
-            });
-        });
-    `;
-
-  writeFileSync(
-    `./${name}/test/file.test.${ext}`,
-    formatContent(ext, testCode)
-  );
-
   spinner.success();
 }
 
@@ -179,15 +111,13 @@ async function createFolders(name, folders) {
 
           if (index === folderNames.length - 1) {
             spinner.success({
-              mark: "✅",
               text: chalk.green(`Folders have been created successfully.`),
             });
           }
         }
       });
-    } catch (error) {
+    } catch (err) {
       spinner.error({
-        mark: "❌",
         text: chalk.red(`Error while creating folders.`),
       });
     }
@@ -207,14 +137,12 @@ async function createFiles(name, files) {
 
         if (index === fileNames.length - 1) {
           spinner.success({
-            mark: "✅",
             text: chalk.green(`Files have been created successfully.`),
           });
         }
       });
-    } catch (error) {
+    } catch (err) {
       spinner.error({
-        mark: "❌",
         text: chalk.red(`Error while creating files.`),
       });
     }
@@ -237,14 +165,12 @@ async function installDependencies(dependencies, installScript) {
       }
 
       spinner.success({
-        mark: "✅",
         text: chalk.green(
           `Dependencies ${dependencies} have been installed successfully.`
         ),
       });
-    } catch (error) {
+    } catch (err) {
       spinner.error({
-        mark: "❌",
         text: chalk.red(`Failed to install some dependencies.`),
       });
     }
@@ -267,22 +193,146 @@ async function installDevDependencies(devDependencies, installScript) {
       }
 
       spinner.success({
-        mark: "✅",
         text: chalk.green(
           `Dev dependencies ${devDependencies} have been installed successfully.`
         ),
       });
-    } catch (error) {
+    } catch (err) {
       spinner.error({
-        mark: "❌",
         text: chalk.red(`Failed to install some dev dependencies.`),
       });
     }
   }
 }
 
+// Configure the project
+async function configureProject(name, installScript, ext, type) {
+  // Configure Test
+  const spinner = createSpinner(chalk.blue(`Configure the project...`)).start();
+
+  try {
+    execSync(`${installScript} jest`, { stdio: "ignore" });
+
+    execSync(`cd ${name} && mkdir test`, { stdio: "ignore" });
+
+    // Create Test Config File
+    const jestConfig = `
+        module.exports = {
+            preset: 'ts-jest',
+            testEnvironment: 'node',
+            testMatch: ['**/test/**/*.test.ts'],
+            roots: ['./test'],
+            moduleFileExtensions: ['ts'],
+            modulePathIgnorePatterns: ['./node_modules'],
+        };
+    `;
+
+    writeFileSync(
+      `./${name}/jest.config.${ext}`,
+      formatContent(ext, jestConfig)
+    );
+
+    // Create Test Exemple File
+    const testImport =
+      type === "TypeScript"
+        ? `
+              import { method } from 'file';
+              import { describe, it, expect, toBe } from 'jest';
+          `
+        : "";
+
+    const testCode = `${testImport}
+          describe('method', () => {
+            it('Should do', () => {
+              expect(true).toBe(true);
+            });
+          });
+      `;
+
+    writeFileSync(
+      `./${name}/test/file.test.${ext}`,
+      formatContent(ext, testCode)
+    );
+
+    // Configure TypeScript
+    if (type === "TypeScript") {
+      execSync(
+        `${installScript} -D nodemon ts-node typescript @types/node @types/jest ts-jest`,
+        { stdio: "ignore" }
+      );
+
+      // Add TypeScript configuration files
+      const tsConfig = {
+        compilerOptions: {
+          target: "es6",
+          module: "commonjs",
+          outDir: "dist",
+          rootDir: "./",
+          esModuleInterop: true,
+          strict: true,
+          paths: {
+            "*": ["./node_modules/*"],
+          },
+        },
+      };
+
+      writeFileSync(`./${name}/tsconfig.json`, formatContent("json", tsConfig));
+    }
+
+    // Configure Environement Variables
+    execSync(`${installScript} -D dotenv`, { stdio: "ignore" });
+
+    const envVars = `
+    PORT=8000
+    NODE_ENV=development
+    DATABASE_URI=url_of_your_database
+    SECRET=super_secret_value
+    `;
+
+    writeFileSync(`./${name}/.env`, formatContent(null, envVars));
+
+    // Configure Server
+    const serverCode =
+      type === "TypeScript"
+        ? `
+      import dotenv from "dotenv";
+      import express, { Express } from "express";
+      import { log } from "console";
+  
+      dotenv.config();
+  
+      const app: Express = express();
+      const port: number = Number.parseInt(process.env.PORT);
+  
+      app.listen(port, () => {
+        log(\`[Server] Server is running on http://localhost:\${port}\`);
+      });
+      `
+        : `
+      import dotenv from "dotenv";
+      import express from "express";
+      import { log } from "console";
+  
+      dotenv.config();
+  
+      const app = express();
+      const port = process.env.PORT;
+  
+      app.listen(port, () => {
+        log(\`[Server] Server is running on http://localhost:\${port}\`);
+      });
+    `;
+
+    writeFileSync(`./${name}/index.${ext}`, formatContent(ext, serverCode));
+
+    spinner.success();
+  } catch (err) {
+    spinner.error();
+  }
+}
+
 program
-  .version("1.0.1")
+  .version("1.0.2")
   .alias("v")
   .description("A tool to create Node.js projects")
   .command("create")
@@ -313,26 +363,23 @@ program
 
       const fileExtension = projectType === "TypeScript" ? "ts" : "js";
 
-      await createProject(
-        projectName,
-        projectType,
-        packageManager,
-        initScript,
-        installScript,
-        fileExtension
-      );
-
+      await createProject(projectName, projectType, packageManager, initScript);
       await createFolders(projectName, folders);
       await createFiles(projectName, files);
       await installDependencies(dependencies, installScript);
       await installDevDependencies(devDependencies, installScript);
-
-      console.log(
-        chalk.green(`\nProject ${projectName} created successfully!`)
+      await configureProject(
+        projectName,
+        installScript,
+        fileExtension,
+        projectType
       );
-    } catch (error) {
-      console.error(chalk.red("\nAn error occurred during project creation:"));
-      console.error(error.message);
+
+      log(chalk.green(`Project ${projectName} created successfully!`));
+    } catch (err) {
+      error(
+        chalk.red(`An error occurred during project creation: ${err.message}`)
+      );
     }
   });
 

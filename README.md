@@ -1,6 +1,6 @@
 # @marctysonclebert/node-starter
 
-NodeStarter est un générateur de projet Node.js polyvalent et personnalisable. Créez rapidement des projets Node.js avec des configurations TypeScript prêtes à l'emploi, des tests Jest intégrés et une structure de fichiers préconfigurée. Accélérez votre processus de démarrage de projet avec NodeStarter !
+NodeStarter est un générateur de projets Node.js polyvalent et personnalisable. Créez rapidement des projets Node.js avec des configurations TypeScript prêtes à l'emploi, des tests Jest intégrés et une structure de fichiers préconfigurée. Accélérez votre processus de démarrage de projet avec NodeStarter !
 
 ## Table des matières
 
@@ -10,22 +10,23 @@ NodeStarter est un générateur de projet Node.js polyvalent et personnalisable.
   - [Installation](#installation)
   - [Utilisation](#utilisation)
   - [Commandes](#commandes)
-  - [Contribuer](#contribuer)
-  - [License](#license)
+    - [`create`](#create)
+  - [Contributions](#contributions)
+  - [Licence](#licence)
 
 ## Description
 
-NodeStarter est un outil de génération de projet Node.js qui vous permet de créer rapidement des projets personnalisés avec les fonctionnalités suivantes :
+NodeStarter est un outil de génération de projets Node.js qui vous permet de créer rapidement des projets personnalisés avec les fonctionnalités suivantes :
 
 - Configurations TypeScript prêtes à l'emploi.
 - Tests Jest intégrés pour une validation automatisée.
 - Structure de fichiers préconfigurée pour une organisation efficace du projet.
 
-Ce générateur de projet vous permet d'accélérer votre processus de démarrage de projet en vous fournissant une base solide et personnalisable pour vos projets Node.js.
+Ce générateur de projets vous permet d'accélérer votre processus de démarrage de projet en vous fournissant une base solide et personnalisable pour vos projets Node.js.
 
 ## Installation
 
-Pour installer NodeStarter dans votre projet, vous pouvez utiliser votre gestionnaire de paquets préféré. Voici les étapes d'installation avec npm :
+Pour installer NodeStarter dans votre projet, vous pouvez utiliser votre gestionnaire de paquets préféré. Voici les étapes d'installation en utilisant npm :
 
 ```bash
 $ npm i -g @marctysonclebert/node-starter
@@ -35,55 +36,40 @@ Assurez-vous d'avoir [Node.js](https://nodejs.org) installé sur votre machine.
 
 ## Utilisation
 
-Après avoir installé NodeStarter, vous pouvez l'exécuter à l'aide de la commande suivante :
+Après avoir installé NodeStarter, vous pouvez l'exécuter en utilisant la commande suivante :
 
 ```bash
 $ npx node-starter
 ```
 
-Cela lancera l'outil de génération de projet Node.js. Suivez les instructions à l'écran pour créer votre projet personnalisé.
+Cela lancera l'outil en ligne de commande de NodeStarter, qui vous guidera à travers le processus de création d'un nouveau projet Node.js.
 
 ## Commandes
 
-NodeStarter prend en charge les commandes suivantes :
+### `create`
 
-- `-V` ou `--version` : Affiche la version de NodeStarter installée.
-- `create` : Crée un nouveau projet Node.js en utilisant les configurations et la structure de fichiers prédéfinies.
-
-Exemple d'utilisation :
-
-- Pour affiche la version de NodeStarter installée.
+Pour créer un nouveau projet en utilisant NodeStarter, exécutez la commande suivante après l'avoir installé :
 
 ```bash
-$ npx node-starter -V
-1.0.1
+$ node-starter create
 ```
 
-- Prée un nouveau projet Node.js en utilisant les configurations et la structure de fichiers prédéfinies.
+Cette commande démarrera une invite interactive qui vous demandera des détails sur le projet, tels que :
 
-```bash
-$ npx node-starter create
-Création du projet en cours...
-...
-...
-...
-Projet créé avec succès !
-```
+- Nom du projet
+- Type de projet (JavaScript ou TypeScript)
+- Gestionnaire de paquets (npm, yarn ou pnpm)
+- Dépendances
+- DevDependencies
+- Dossiers supplémentaires
+- Fichiers supplémentaires
 
-## Contribuer
+Une fois que vous aurez fourni les informations requises, NodeStarter créera le projet avec la configuration spécifiée.
 
-Nous encourageons vivement les contributions à NodeStarter. Si vous souhaitez contribuer, veuillez suivre les étapes suivantes :
+## Contributions
 
-1. Fork du dépôt [GitHub](https://github.com/clebertmarctyson/node-starter).
-2. Créez une branche pour vos modifications : `git checkout -b feature/your-feature`.
-3. Effectuez les modifications et commit : `git commit -m 'Add some feature'`.
-4. Poussez les modifications vers votre fork : `git push origin feature/your-feature`.
-5. Ouvrez une demande d'extraction (pull request) vers la branche `main` du dépôt d'origine.
+Les contributions sont les bienvenues ! Si vous rencontrez des problèmes ou avez des suggestions d'amélioration, veuillez ouvrir une issue sur le [dépôt GitHub](https://github.com/clebertmarctyson/node-starter). Si vous souhaitez contribuer des modifications de code, vous pouvez créer une fork du dépôt, apporter vos modifications, puis soumettre une pull request.
 
-Nous apprécions toutes les contributions, qu'il s'agisse de rapports de bugs, de demandes de fonctionnalités ou de corrections de code.
+## Licence
 
-## License
-
-Ce projet est sous licence MIT. Pour plus d'informations, consultez le fichier [LICENSE](https://github.com/clebertmarctyson/node-starter/blob/master/LICENSE).
-
----
+Ce projet est sous licence MIT. Consultez le fichier [LICENSE](LICENSE) pour plus de détails.

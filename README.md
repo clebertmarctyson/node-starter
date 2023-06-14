@@ -68,7 +68,15 @@ Une fois que vous aurez fourni les informations requises, NodeStarter créera le
 
 ## Contributions
 
-Les contributions sont les bienvenues ! Si vous rencontrez des problèmes ou avez des suggestions d'amélioration, veuillez ouvrir une issue sur le [dépôt GitHub](https://github.com/clebertmarctyson/node-starter). Si vous souhaitez contribuer des modifications de code, vous pouvez créer une fork du dépôt, apporter vos modifications, puis soumettre une pull request.
+Nous encourageons vivement les contributions à NodeStarter. Si vous souhaitez contribuer, veuillez suivre les étapes suivantes :
+
+1. Fork du dépôt GitHub.
+2. Créez une branche pour vos modifications : git checkout -b feature/your-feature.
+3. Effectuez les modifications et commit : git commit -m 'Add some feature'.
+4. Poussez les modifications vers votre fork : git push origin feature/your-feature.
+5. Ouvrez une demande d'extraction (pull request) vers la branche master du dépôt d'origine.
+
+Nous apprécions toutes les contributions, qu'il s'agisse de rapports de bugs, de demandes de fonctionnalités ou de corrections de code.
 
 ## Licence
 

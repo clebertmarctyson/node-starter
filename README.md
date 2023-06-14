@@ -82,4 +82,6 @@ Nous apprécions toutes les contributions, qu'il s'agisse de rapports de bugs, d
 
 ## Licence
 
-Ce projet est sous licence MIT. Consultez le fichier [LICENSE](LICENSE) pour plus de détails.
+Ce projet est sous licence MIT. Consultez le fichier [LICENSE](https://github.com/clebertmarctyson/NodeStarter/blob/master/LICENSE) pour plus de détails.
+
+---

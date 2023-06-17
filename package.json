@@ -1,18 +1,19 @@
 {
   "name": "@marctysonclebert/node-starter",
-  "version": "1.0.2",
-  "description": "NodeStarter est un générateur de projets Node.js polyvalent et personnalisable. Créez rapidement des projets Node.js avec des configurations TypeScript prêtes à l'emploi, des tests Jest intégrés et une structure de fichiers préconfigurée. Accélérez votre processus de démarrage de projet avec NodeStarter !",
+  "version": "1.0.3",
+  "description": "NodeStarter is a versatile and customizable Node.js project generator. Quickly create Node.js projects with ready-to-use TypeScript configurations, integrated Jest tests, and a preconfigured file structure. Speed up your project start process with NodeStarter!",
   "main": "./index.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js create"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/clebertmarctyson/node-starter.git"
   },
-  "bin": "./index.js",
+  "bin": {
+    "node-starter": "index.js"
+  },
   "keywords": [
     "node",
     "nodejs",
@@ -28,9 +29,10 @@
   "homepage": "https://github.com/clebertmarctyson/node-starter#readme",
   "dependencies": {
     "chalk": "^5.2.0",
-    "chalk-animation": "^2.0.3",
     "child_process": "^1.0.2",
     "commander": "^10.0.1",
+    "figlet": "^1.6.0",
+    "gradient-string": "^2.0.2",
     "inquirer": "^9.2.7",
     "nanospinner": "^1.1.0",
     "prettier": "^2.8.8"

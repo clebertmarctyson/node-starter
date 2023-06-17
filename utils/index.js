@@ -6,7 +6,7 @@ import { format } from "prettier";
  * @param {number} milliseconds - The number of milliseconds to sleep.
  * @returns {Promise<void>} A promise that resolves after the specified delay.
  */
-export const sleep = (milliseconds) => {
+export const sleep = (milliseconds = 2000) => {
   return new Promise((resolve) => {
     setTimeout(resolve, milliseconds);
   });

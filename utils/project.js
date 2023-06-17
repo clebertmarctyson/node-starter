@@ -23,7 +23,8 @@ import {
  * @param {string} manager - The package manager to use (e.g., npm, yarn, pnpm).
  * @returns {Promise<void>}
  */
-export async function createProject(name, manager) {
+export async function createProject(name, manager, ext) {
+  // TODO : ext params
   try {
     if (existsSync(name)) {
       throw new Error(`\nThe project ${name} already exists.\n`);
@@ -58,11 +59,12 @@ export async function createProject(name, manager) {
 
     const updatedPackageJsonFile = {
       ...packageJsonFile,
+      main: `index.${ext}`,
       scripts: {
         ...packageJsonFile.scripts,
         test: "jest",
-        start: "node index.js",
-        dev: "nodemon index.js",
+        start: "node ./dist/index.js",
+        dev: `nodemon`,
       },
     };
 

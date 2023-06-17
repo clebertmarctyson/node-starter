@@ -81,6 +81,8 @@ export function configureGit() {
  * @param {string} ext - The file extension (js or ts).
  */
 export function configureServer(type, ext) {
+  execSync(`${installScript} express`, { stdio: "ignore" });
+
   const serverCode =
     type === "TypeScript"
       ? `
@@ -94,7 +96,7 @@ export function configureServer(type, ext) {
     const port: number = Number.parseInt(process.env.PORT);
 
     app.listen(port, () => {
-      log(\`[Server] Server is running on http://localhost:\${port}\`);
+      log(\`🚀[Server] Server is running on http://localhost:\${port}\`);
     });
     `
       : `
@@ -108,7 +110,7 @@ export function configureServer(type, ext) {
     const port = process.env.PORT;
 
     app.listen(port, () => {
-      log(\`[Server] Server is running on http://localhost:\${port}\`);
+      log(\`🚀[Server] Server is running on http://localhost:\${port}\`);
     });
   `;
 
@@ -139,6 +141,8 @@ export function configureTypeScript(installScript) {
         "*": ["./node_modules/*"],
       },
     },
+    include: ["**/*.ts"],
+    exclude: ["node_modules"],
   };
 
   writeFileSync(`./tsconfig.json`, formatContent("json", tsConfig));

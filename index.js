@@ -19,7 +19,7 @@ import { questions } from "./utils/questions.js";
 import { sleep } from "./utils/index.js";
 
 program
-  .version("1.0.4")
+  .version("1.0.5")
   .description("A tool to create Node.js projects")
   .command("create")
   .description("Create a new project")

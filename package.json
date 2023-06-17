@@ -1,18 +1,18 @@
 {
   "name": "@marctysonclebert/node-starter",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "NodeStarter is a versatile and customizable Node.js project generator. Quickly create Node.js projects with ready-to-use TypeScript configurations, integrated Jest tests, and a preconfigured file structure. Speed up your project start process with NodeStarter!",
   "main": "./index.js",
   "type": "module",
   "scripts": {
-    "start": "node index.js create"
+    "start": "node ./index.js create"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/clebertmarctyson/node-starter.git"
   },
   "bin": {
-    "node-starter": "index.js"
+    "node-starter": "./index.js"
   },
   "keywords": [
     "node",

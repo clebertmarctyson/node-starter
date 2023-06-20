@@ -8,18 +8,20 @@ import gradient from "gradient-string";
 import { log } from "console";
 
 import {
-  configureProject,
-  createFiles,
-  createFolders,
   createProject,
+  configureProject,
+  createFolders,
+  createFiles,
   installDependencies,
   installDevDependencies,
 } from "./utils/project.js";
+
 import { questions } from "./utils/questions.js";
+
 import { sleep } from "./utils/index.js";
 
 program
-  .version("1.0.5")
+  .version("1.0.6")
   .description("A tool to create Node.js projects")
   .command("create")
   .description("Create a new project")
@@ -43,10 +45,11 @@ program
     } = await inquirer.prompt(questions);
 
     const installScript = `${manager} ${manager === "npm" ? "i" : "add"}`;
+    const ext = type === "TypeScript" ? "ts" : "js";
 
     try {
-      await createProject(name, manager);
-      await configureProject(installScript, type);
+      await createProject(name, manager, ext);
+      await configureProject(installScript, type, ext);
       await createFolders(folders);
       await createFiles(files);
       await installDependencies(dependencies, installScript);

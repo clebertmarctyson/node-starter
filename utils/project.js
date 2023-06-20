@@ -21,13 +21,13 @@ import {
  *
  * @param {string} name - The name of the project.
  * @param {string} manager - The package manager to use (e.g., npm, yarn, pnpm).
+ * @param {string} ext - The file extension (js or ts).
  * @returns {Promise<void>}
  */
 export async function createProject(name, manager, ext) {
-  // TODO : ext params
   try {
     if (existsSync(name)) {
-      throw new Error(`\nThe project ${name} already exists.\n`);
+      throw new Error(`The project ${name} already exists.`);
     }
 
     mkdirSync(name);
@@ -59,7 +59,7 @@ export async function createProject(name, manager, ext) {
 
     const updatedPackageJsonFile = {
       ...packageJsonFile,
-      main: `index.${ext}`,
+      main: `./index.${ext}`,
       scripts: {
         ...packageJsonFile.scripts,
         test: "jest",
@@ -85,11 +85,10 @@ export async function createProject(name, manager, ext) {
  *
  * @param {string} installScript - The installation script based on the package manager.
  * @param {string} type - The type of project (e.g., JavaScript, TypeScript).
+ * @param {string} ext - The file extension (js or ts).
  * @returns {Promise<void>}
  */
-export async function configureProject(installScript, type) {
-  const ext = type === "TypeScript" ? "ts" : "js";
-
+export async function configureProject(installScript, type, ext) {
   log(chalk.blue("\nStarting project configuration.\n"));
 
   try {
@@ -106,7 +105,7 @@ export async function configureProject(installScript, type) {
     log(chalk.blue("Git configuration completed."));
 
     // Configure Server
-    configureServer(type, ext);
+    configureServer(installScript, type, ext);
     log(chalk.blue("Server configuration completed."));
 
     // Configure TypeScript

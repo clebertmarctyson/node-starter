@@ -59,7 +59,7 @@ program
         text: chalk.green(
           `Project is ready to start, run : \n\n${chalk.blue(
             `cd ${name}`
-          )} \n${chalk.blue(`${manager} start`)}\n`
+          )} \n${chalk.blue(`${manager} dev`)}\n`
         ),
       });
 

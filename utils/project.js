@@ -1,8 +1,3 @@
-/**
- * @fileOverview A collection of functions for creating and configuring Node.js projects.
- * @module ProjectUtils
- */
-
 import chalk from "chalk";
 import { execSync } from "child_process";
 import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "fs";

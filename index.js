@@ -1,11 +1,9 @@
-import { program } from "commander";
+import { Command } from "commander";
 import { createSpinner } from "nanospinner";
 import chalk from "chalk";
 import inquirer from "inquirer";
-import figlet from "figlet";
 import gradient from "gradient-string";
-
-import { log } from "console";
+import figlet from "figlet";
 
 import {
   createProject,
@@ -17,12 +15,13 @@ import {
 } from "./utils/project.js";
 
 import { questions } from "./utils/questions.js";
-
 import { sleep } from "./utils/index.js";
+import { log } from "console";
+
+const program = new Command();
 
 program
-  .version("1.0.6")
-  .description("A tool to create Node.js projects")
+  .version("1.0.8")
   .command("create")
   .description("Create a new project")
   .action(async () => {
@@ -45,11 +44,15 @@ program
     } = await inquirer.prompt(questions);
 
     const installScript = `${manager} ${manager === "npm" ? "i" : "add"}`;
+    const initScript =
+      manager === "npm" || manager === "yarn"
+        ? `${manager} init -y`
+        : `${manager} init`;
     const ext = type === "TypeScript" ? "ts" : "js";
 
     try {
-      await createProject(name, manager, ext);
-      await configureProject(installScript, type, ext);
+      await createProject(name, initScript, ext);
+      await configureProject(installScript, ext);
       await createFolders(folders);
       await createFiles(files);
       await installDependencies(dependencies, installScript);

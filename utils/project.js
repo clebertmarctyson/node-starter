@@ -15,11 +15,11 @@ import {
  * Create a new project.
  *
  * @param {string} name - The name of the project.
- * @param {string} manager - The package manager to use (e.g., npm, yarn, pnpm).
+ * @param {string} initScript - The init script based on the package manager.
  * @param {string} ext - The file extension (js or ts).
  * @returns {Promise<void>}
  */
-export async function createProject(name, manager, ext) {
+export async function createProject(name, initScript, ext) {
   try {
     if (existsSync(name)) {
       throw new Error(`The project ${name} already exists.`);
@@ -29,14 +29,7 @@ export async function createProject(name, manager, ext) {
 
     process.chdir(name);
 
-    execSync(
-      manager === "npm" || manager === "yarn"
-        ? `${manager} init -y`
-        : `${manager} init`,
-      {
-        stdio: "ignore",
-      }
-    );
+    execSync(initScript, { stdio: "ignore" });
 
     if (!existsSync("./package.json")) {
       process.chdir("../");
@@ -79,11 +72,10 @@ export async function createProject(name, manager, ext) {
  * Configure the project.
  *
  * @param {string} installScript - The installation script based on the package manager.
- * @param {string} type - The type of project (e.g., JavaScript, TypeScript).
  * @param {string} ext - The file extension (js or ts).
  * @returns {Promise<void>}
  */
-export async function configureProject(installScript, type, ext) {
+export async function configureProject(installScript, ext) {
   log(chalk.blue("\nStarting project configuration.\n"));
 
   try {
@@ -100,11 +92,11 @@ export async function configureProject(installScript, type, ext) {
     log(chalk.blue("Git configuration completed."));
 
     // Configure Server
-    configureServer(installScript, type, ext);
+    configureServer(installScript, ext);
     log(chalk.blue("Server configuration completed."));
 
     // Configure TypeScript
-    if (type === "TypeScript") {
+    if (ext === "ts") {
       configureTypeScript(installScript);
       log(chalk.blue("TypeScript configuration completed."));
     }

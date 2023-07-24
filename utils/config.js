@@ -92,28 +92,23 @@ export function configureGit() {
  * Configure the server.
  *
  * @param {string} installScript - The installation script based on the package manager.
- * @param {string} type - The type of project (e.g., JavaScript, TypeScript).
  * @param {string} ext - The file extension (js or ts).
  */
-export function configureServer(installScript, type, ext) {
+export function configureServer(installScript, ext) {
   execSync(`${installScript} express`, { stdio: "ignore" });
 
   const serverCode = `
     import dotenv from 'dotenv';
-    import express ${
-      type === "TypeScript" ? ", { Express }" : ""
-    } from 'express';
+    import express ${ext === "ts" ? ", { Express }" : ""} from 'express';
 
     import { log } from 'console';
 
     dotenv.config();
 
-    const app ${type === "TypeScript" ? ": Express" : ""} = express();
+    const app ${ext === "ts" ? ": Express" : ""} = express();
     
     const port = ${
-      type === "TypeScript"
-        ? "Number.parseInt(process.env.PORT!)"
-        : "process.env.PORT"
+      ext === "ts" ? "Number.parseInt(process.env.PORT!)" : "process.env.PORT"
     };
 
     app.listen(port, () => {

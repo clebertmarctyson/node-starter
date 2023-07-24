@@ -1,6 +1,6 @@
 {
   "name": "@marctysonclebert/node-starter",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "NodeStarter is a versatile and customizable Node.js project generator. Quickly create Node.js projects with ready-to-use TypeScript configurations, integrated Jest tests, and a preconfigured file structure. Speed up your project start process with NodeStarter!",
   "main": "./index.js",
   "type": "module",
@@ -36,10 +36,5 @@
     "inquirer": "^9.2.7",
     "nanospinner": "^1.1.0",
     "prettier": "^2.8.8"
-  },
-  "devDependencies": {
-    "@types/figlet": "^1.5.6",
-    "@types/gradient-string": "^1.1.2",
-    "@types/prettier": "^2.7.3"
   }
 }

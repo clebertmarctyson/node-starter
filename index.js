@@ -21,7 +21,7 @@ import { log } from "console";
 const program = new Command();
 
 program
-  .version("1.0.8")
+  .version("1.0.9")
   .command("create")
   .description("Create a new project")
   .action(async () => {
@@ -51,12 +51,12 @@ program
     const ext = type === "TypeScript" ? "ts" : "js";
 
     try {
-      await createProject(name, initScript, ext);
-      await configureProject(installScript, ext);
-      await createFolders(folders);
-      await createFiles(files);
-      await installDependencies(dependencies, installScript);
-      await installDevDependencies(devDependencies, installScript);
+      // await createProject(name, initScript, ext);
+      // await configureProject(installScript, ext);
+      // await createFolders(folders);
+      // await createFiles(files);
+      // await installDependencies(dependencies, installScript);
+      // await installDevDependencies(devDependencies, installScript);
 
       spinner.success({
         text: chalk.green(

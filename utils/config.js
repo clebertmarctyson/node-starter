@@ -19,7 +19,7 @@ export function configureJest(installScript, ext) {
 
   // Create Test Config File
   const jestConfig = ` ${
-    ext === "TypeScript"
+    ext === "ts"
       ? `
       module.exports = {
         preset: 'ts-jest',
@@ -40,7 +40,7 @@ export function configureJest(installScript, ext) {
   }
 `;
 
-  writeFileSync(`./jest.config.${ext.toLowerCase()}`, jestConfig);
+  writeFileSync(`./jest.config.${ext}`, jestConfig);
 
   // Create Test Example File
   const testCode = `
@@ -62,7 +62,7 @@ export function configureJest(installScript, ext) {
  * @param {string} installScript - The installation script based on the package manager.
  */
 export function configureEnvVariables(installScript) {
-  execSync(`${installScript} -D dotenv`, { stdio: "ignore" });
+  execSync(`${installScript} -D dotenv nodemon`, { stdio: "ignore" });
 
   const envVars = `
     PORT=5000
@@ -100,19 +100,21 @@ export function configureServer(installScript, ext) {
   const serverCode = `
     import dotenv from 'dotenv';
     import express ${ext === "ts" ? ", { Express }" : ""} from 'express';
-
     import { log } from 'console';
 
     dotenv.config();
 
     const app ${ext === "ts" ? ": Express" : ""} = express();
+    const port = process.env.PORT;
+    const nodeEnv = process.env.NODE_ENV;
     
-    const port = ${
-      ext === "ts" ? "Number.parseInt(process.env.PORT!)" : "process.env.PORT"
-    };
 
     app.listen(port, () => {
-      log(\`🚀[Server] Server is running on http://localhost:\${port}\`);
+      if(nodeEnv === "development") {
+        log(\`🚀[Server] Server is running on http://localhost:\${port}\`);
+      } else {
+        log(\`🚀[Server] Server is running ...\`);
+      }
     });
   `;
 
@@ -126,7 +128,7 @@ export function configureServer(installScript, ext) {
  */
 export function configureTypeScript(installScript) {
   execSync(
-    `${installScript} -D typescript nodemon ts-node @types/node @types/jest ts-jest @types/express`,
+    `${installScript} -D typescript ts-node @types/node @types/jest ts-jest @types/express`,
     { stdio: "ignore" }
   );
 

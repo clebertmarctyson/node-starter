@@ -48,6 +48,7 @@ export async function createProject(name, initScript, ext) {
     const updatedPackageJsonFile = {
       ...packageJsonFile,
       main: `./index.${ext}`,
+      type: ext === "ts" ? "commonjs" : "module",
       scripts: {
         ...packageJsonFile.scripts,
         test: "jest",
